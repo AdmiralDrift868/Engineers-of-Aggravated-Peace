@@ -1805,7 +1805,7 @@ class BallisticCalculator(QMainWindow):
                 self.status_bar.showMessage(f"Plot export error: {str(e)}")
     def export_results(self):
         self.export_to_csv()
-    def export_presets(self):
+        def export_presets(self):
         # Offer to save all or just user presets?
         # Let's save all for backup, user can manually edit if needed.
         filename, _ = QFileDialog.getSaveFileName(
@@ -1814,24 +1814,25 @@ class BallisticCalculator(QMainWindow):
             if not filename.endswith('.json'):
                 filename += '.json'
             try:
-                # Prepare  convert masses back to grams for UI consistency if needed later
+                # Prepare: Convert masses back to grams for UI consistency if needed later
                 # But storage is in kg. Keep as kg.
-                 export_data = self.presets
-                 # Add metadata
-                 export_data["_metadata"] = {
-                      "exported_by": "AcuTex Ballistic Calculator",
-                      "exported_at": str(QDateTime.currentDateTime().toString())
-                 }
-                 with open(filename, 'w') as f:
+                export_data = self.presets
+                # Add metadata
+                export_data["_metadata"] = {
+                    "exported_by": "AcuTex Ballistic Calculator",
+                    "exported_at": str(QDateTime.currentDateTime().toString())
+                }
+                with open(filename, 'w') as f:
                     json.dump(export_data, f, indent=2)
                 QMessageBox.information(self, "Success", f"Presets exported to {filename}")
                 self.status_bar.showMessage(f"Exported presets to {filename}")
                 log(f"Presets exported to JSON: {filename}")
-            except Exception as e:
+            except Exception as e: # --- Make sure 'e' is defined in the except block ---
                 error_msg = f"Failed to export presets: {str(e)}"
                 log(error_msg, "error")
                 QMessageBox.critical(self, "Error", error_msg)
-                self.status_bar.showMessage(f"Preset export error: {str(e)}")
+                self.status_bar.showMessage(f"Preset export error: {str(e)}") # --- Use 'str(e)' or 'error_msg' ---
+          
     def import_presets(self):
         filename, _ = QFileDialog.getOpenFileName(
             self, "Import Presets", "", "JSON Files (*.json)")
