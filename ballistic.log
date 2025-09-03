@@ -1,0 +1,3 @@
+2025-09-03 16:03:53,625 INFO: Preset file user_presets.json not found. Using defaults only.
+2025-09-03 16:03:53,633 INFO: Config file user_config.json not found. Using defaults.
+2025-09-03 16:03:53,651 INFO: Applied config: Dark Mode = False, Imperial = False
