@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-"""AcuTex Ballistic Calculator - Ultimate Edition (Refined & Expanded)
-Combines features from all provided scripts with bug fixes, improvements, and expanded database.
-"""
 
 import sys
 import math
